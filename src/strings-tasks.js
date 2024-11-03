@@ -227,8 +227,9 @@ function endsWith(str, substr) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
+function formatTime(minutes, seconds) {
+  const padStart = (str) => `${str}`.padStart(2, '0');
+  return `${padStart(minutes)}:${padStart(seconds)}`;
 }
 
 /**
