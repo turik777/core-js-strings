@@ -450,8 +450,15 @@ function extractEmails(str) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const ROT13 =
+    'abcdefghijklmnopqrstuvwxyzabcdefghijklm' +
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLM';
+  const index = (char, num = 0) => ROT13[ROT13.indexOf(char) + num];
+  return str
+    .split('')
+    .map((char) => char.replace(index(char), index(char, 13)))
+    .join('');
 }
 
 /**
